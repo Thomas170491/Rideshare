@@ -109,7 +109,7 @@ def create_app():
     app = Flask(__name__)
 
     # Configure the Flask application with necessary settings
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/nomades/Documents/project_app/instance/project_app.db"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/thomas/project_app/project_app.db"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Disable track modifications to save resources
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')  # Secret key for session management and CSRF protection
     app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')  # Secret key for JWT
@@ -172,17 +172,24 @@ def send_invitation_email(email, deeplink):
 
 
 
+
 '''
 with app.app_context(): 
     a1 = User(username='Thomas170491', name='Thomas', surname= 'Papas', email= 'thomaspapas470@gmail.com', password= '0123456789',role = 'admin')
     db.session.add(a1)
     db.session.commit()
 '''
+
 '''
 with app.app_context(): 
-    d1 = Driver(username='test2', name='Test', surname= 'Test', email= 'email10@email.com', password= 'testuser')
+    d1 = User(username='test2', name='Test', surname= 'Test', email= 'email10@email.com', password= 'testuser',role='driver')
     db.session.add(d1)
     db.session.commit()
+ '''
 
+'''with app.app_context():
+    u1 = User(username='test1', name='Test', surname= 'Test', email= 'email@email.com', password= 'testuser',role='user')
+    db.session.add(u1)
+    db.session.commit()
 
 '''

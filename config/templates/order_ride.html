@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Order Ride</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD9TzCsljMc19-ZSoiBJrbuycySEBpirE&callback=initMap" async defer></script>
+   
     <script>
+         async function loadGoogleMapsApi() {
+            const response = await fetch('/api-key');
+            const data = await response.json();
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${data.apiKey}&callback=initMap`;
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        }
         let map;
         let geocoder;
 
@@ -87,7 +96,7 @@ function geocodeAddress(address, callback) {
 }
 
 
-    
+    document.addEventListener('DOMContentLoaded', loadGoogleMapsApi);
     </script>
 </head>
 <body>

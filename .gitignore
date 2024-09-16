@@ -2,3 +2,5 @@ __pycache__/
 .env
 instance/
 UsersguitaDesktopProjectproject_appproject_app
+project_app.db
+myenv/

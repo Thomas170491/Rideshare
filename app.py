@@ -1,6 +1,6 @@
+import os
 
-
-from flask import  render_template,flash,redirect,url_for
+from flask import  render_template,flash,redirect,url_for,jsonify
 from config.models import app,db, InvitationEmails,User
 from flask_jwt_extended import decode_token
 from forms import RegistrationForm
@@ -85,6 +85,10 @@ def register(token):
 
         # Render the registration template with the form and email context variables
         return render_template('register.html', form=form, email=email)
+
+@app.route('/api-key')
+def api_key():
+    return jsonify({'apiKey': os.getenv('GOOGLE_MAPS_API_KEY')})
 
 
 # Run the application

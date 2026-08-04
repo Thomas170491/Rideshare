@@ -5,7 +5,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from config.models import  db 
 from flask import request, render_template, flash, redirect, url_for, abort,jsonify
 from config.models import User, RideOrder
-from werkzeug.urls import url_parse
+from werkzeug.urls import urlsplit
 from forms import  LoginForm, OrderRide
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_smorest import Blueprint
@@ -30,7 +30,7 @@ def user_login():
         if user and user.check_password(form.password.data):  # Verify if the user exists and if the password given is valid
             login_user(user, remember=form.remember_me.data)
             next_page = request.args.get('next')
-            if not next_page or url_parse(next_page).netloc != '':  # Check if next_page URL is a relative URL
+            if not next_page or urlsplit(next_page).netloc != '':  # Check if next_page URL is a relative URL
             
                 next_page = url_for(f'{current_user.role}s.dashboard')
             return redirect(next_page)

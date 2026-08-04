@@ -7,3 +7,4 @@ myenv_broken/
 Rideshare/
 asttokens==2.4.1
 requirements_old.txt
+requirements.before-upgrade.txt

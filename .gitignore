@@ -3,4 +3,7 @@ __pycache__/
 instance/
 UsersguitaDesktopProjectproject_appproject_app
 project_app.db
-myenv/
+myenv_broken/
+Rideshare/
+asttokens==2.4.1
+requirements_old.txt

@@ -51,8 +51,7 @@ def register(token):
         
         # Create a new instance of the registration form
         form = RegistrationForm()
-        existing_user = User.query.filter_by(email=email).first()
-
+        existing_user = User.query.filter_by(email=email)
         # Check if the form has been submitted and is valid
         if form.validate_on_submit():
             if existing_user:
@@ -86,9 +85,7 @@ def register(token):
         # Render the registration template with the form and email context variables
         return render_template('register.html', form=form, email=email)
 
-@app.route('/api-key')
-def api_key():
-    return jsonify({'apiKey': os.getenv('GOOGLE_MAPS_API_KEY')})
+
 
 
 # Run the application

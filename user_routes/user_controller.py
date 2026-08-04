@@ -83,8 +83,12 @@ def order_ride():
                                     destination= form.destination.data,
                                     time=form.time.data,
                                     ride_id=order.id,
-                                    price=calculate_price(form.departure.data, form.destination.data)))
-    return render_template('order_ride.html', form=form)
+                                    price=price)
+                                    )
+    return render_template('order_ride.html', 
+                           form=form,
+                           google_maps_api_key = os.getenv("GOOGLE_MAPS_API_KEY")
+                           )
 
 
 @users.route('/order_confirmation/<int:ride_id>')

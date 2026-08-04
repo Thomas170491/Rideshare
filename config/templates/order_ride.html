@@ -4,20 +4,16 @@
     <meta charset="UTF-8">
     <title>Order Ride</title>
    
+      <script
+        async 
+        src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key | e }}&callback=initMap&loading=async">
+    </script>
+
     <script>
-         async function loadGoogleMapsApi() {
-            const response = await fetch('/api-key');
-            const data = await response.json();
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${data.apiKey}&callback=initMap`;
-            script.async = true;
-            script.defer = true;
-            document.head.appendChild(script);
-        }
         let map;
         let geocoder;
 
-        function initMap() {
+        window.initMap= function () {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: 46.2044, lng: 6.1432 },  // Center map on Geneva, Switzerland
                 zoom: 12
@@ -94,10 +90,8 @@ function geocodeAddress(address, callback) {
         }
     });
 }
-
-
-    document.addEventListener('DOMContentLoaded', loadGoogleMapsApi);
     </script>
+
 </head>
 <body>
     <h2>Order Ride</h2>
